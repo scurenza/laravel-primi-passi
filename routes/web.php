@@ -14,5 +14,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $homeTitle = "Benvenuto da Boolean";
+    return view('home', compact("homeTitle"));
+})->name("home");
+
+Route::get('/team', function () {
+    $data = [
+        "teamTitle" => "Il team di Boolean",
+        "description" => "Tutor Boolean",
+        "tutors" => [
+            "Marco",
+            "Mauro"
+        ]
+    ];
+    return view('team', $data);
+})->name("team");
+
+Route::get('/teacher', function () {
+    $teacherTitle = "Ecco la nostra teacher:";
+    $teacher = "Olga";
+    return view('teacher', compact("teacherTitle", "teacher"));
+})->name("teacher");
+
+Route::get('/supervisor', function () {
+    $supervisor = "Adriano";
+    return view('supervisor', compact("supervisor"));
+})->name("supervisor");
